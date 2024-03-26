@@ -2,7 +2,9 @@
 // Created by 22753 on 2024/3/25.
 //
 
-#pragma once
+//#pragma once
+#ifndef QUEUE_LINKQUEUE_H
+#define QUEUE_LINKQUEUE_H
 
 template<typename T>
 class LinkQueue {
@@ -56,3 +58,5 @@ void LinkQueue<T>::push(T x) {
     rear_pr->next = new LinkQueue<T>(x);
     rear_pr = rear_pr->next;
 }
+
+#endif //QUEUE_CIRCLEQUEUE_H

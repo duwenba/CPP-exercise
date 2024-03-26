@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Queue main.cpp
         LinkQueue.hpp
         Queue.hpp
+        CircleQueue.h
 )

@@ -2,8 +2,9 @@
 // Created by 22753 on 2024/3/25.
 //
 
-#pragma once
-
+//#pragma once
+#ifndef QUEUE_QUEUE_H
+#define QUEUE_QUEUE_H
 
 template<typename T,int size = 20>
 class Queue {

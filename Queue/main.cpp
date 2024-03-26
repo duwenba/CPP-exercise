@@ -2,13 +2,27 @@
 //#include <queue>
 //#include "Queue.hpp"
 #include "LinkQueue.hpp"
+//#include "CircleQueue.h"
 
-int a[] = {1,2,3,4,5,6,7,8};
+#ifdef _GLIBCXX_QUEUE
+std::queue<int> mQueue;
+#endif
+#ifdef QUEUE_LINKQUEUE_H
 LinkQueue<int> mQueue;
+#endif
+#ifdef QUEUE_CIRCLEQUEUE_H
+CircleQueue<int> mQueue;
+#endif
+#ifdef QUEUE_QUEUE_H
+Queue<int> mQueue;
+#endif
+
 
 int main() {
-//    mQueue.asHead();
-    for(int i = 1; i <= 15;i++){
+
+//    LinkQueue<int> mQueue;
+
+    for(int i = 1; i <= 8;i++){
         mQueue.push(i);
     }
     int n = 1;
@@ -22,6 +36,9 @@ int main() {
             mQueue.pop();
         }
         n++;
+    }
+    for(int i = 1; i <= 8;i++){
+        mQueue.push(i);
     }
     return 0;
 }

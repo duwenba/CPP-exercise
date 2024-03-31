@@ -1,0 +1,80 @@
+:AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.226][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.226][INF][Px2514][Tx3d18] resource\roguelike\Phantom\encounter_for_deposit.json
+[2024-03-27 19:39:09.227][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig::parse | enter
+[2024-03-27 19:39:09.227][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.227][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig :: asst::AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.227][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.227][INF][Px2514][Tx3d18] resource\roguelike\Mizuki\encounter_for_deposit.json
+[2024-03-27 19:39:09.228][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig::parse | enter
+[2024-03-27 19:39:09.228][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.228][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig :: asst::AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.228][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.228][INF][Px2514][Tx3d18] resource\roguelike\Sami\encounter_for_deposit.json
+[2024-03-27 19:39:09.229][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig::parse | enter
+[2024-03-27 19:39:09.229][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.229][TRC][Px2514][Tx3d18] asst::RoguelikeStageEncounterConfig :: asst::AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::RoguelikeFoldartalConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.230][INF][Px2514][Tx3d18] resource\roguelike\Sami\foldartal.json
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::RoguelikeFoldartalConfig::parse | enter
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::RoguelikeFoldartalConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::RoguelikeFoldartalConfig :: asst::AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.230][INF][Px2514][Tx3d18] asst::ResourceLoader::load ret 1
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::ResourceLoader::load | leave, 360 ms
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::ResourceLoader::load | enter
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::AvatarCacheManager::load | enter
+[2024-03-27 19:39:09.230][INF][Px2514][Tx3d18] already loaded cache\avatars
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::AvatarCacheManager::load | leave, 0 ms
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::TaskData :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.230][INF][Px2514][Tx3d18] cache\resource\tasks.json
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::TaskData::parse | enter
+[2024-03-27 19:39:09.230][TRC][Px2514][Tx3d18] asst::TaskData::lazy_parse | enter
+[2024-03-27 19:39:09.231][TRC][Px2514][Tx3d18] asst::TaskData::lazy_parse | leave, 1 ms
+[2024-03-27 19:39:09.277][TRC][Px2514][Tx3d18] asst::TaskData::parse | leave, 47 ms
+[2024-03-27 19:39:09.277][TRC][Px2514][Tx3d18] asst::TaskData :: asst::AbstractConfig::load | leave, 47 ms
+[2024-03-27 19:39:09.277][INF][Px2514][Tx3d18] asst::ResourceLoader::load ret 1
+[2024-03-27 19:39:09.277][TRC][Px2514][Tx3d18] asst::ResourceLoader::load | leave, 47 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::ResourceLoader::load | enter
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OnnxSessions::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] record path resource\onnx\skill_ready_cls.onnx
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OnnxSessions::load | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OnnxSessions::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] record path resource\onnx\deploy_direction_cls.onnx
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OnnxSessions::load | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OnnxSessions::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] record path resource\onnx\operators_det.onnx
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OnnxSessions::load | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OcrPack::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] load resource\PaddleOCR
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OcrPack::load | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OcrPack::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] load resource\PaddleCharOCR
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::OcrPack::load | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::GeneralConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] resource\config.json
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx3d18] asst::Assistant::Assistant | enter
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::GeneralConfig::parse | enter
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx3d18] asst::Controller::Controller | enter
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx3d18] asst::Controller::Controller | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx3d18] asst::Assistant::Assistant | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::GeneralConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::GeneralConfig :: asst::AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2f90] asst::RecruitConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.278][INF][Px2514][Tx2f90] resource\recruitment.json
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2ba8] asst::Assistant::call_proc | enter
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx3dbc] asst::Assistant::msg_proc | enter
+[2024-03-27 19:39:09.278][TRC][Px2514][Tx2c7c] asst::Assistant::working_proc | enter
+[2024-03-27 19:39:09.279][TRC][Px2514][Tx2f90] asst::RecruitConfig::parse | enter
+[2024-03-27 19:39:09.279][TRC][Px2514][Tx2f90] asst::RecruitConfig::clear | enter
+[2024-03-27 19:39:09.279][TRC][Px2514][Tx2f90] asst::RecruitConfig::clear | leave, 0 ms
+[2024-03-27 19:39:09.279][INF][Px2514][Tx3d18] asst::Assistant::set_instance_option | key 2 value minitouch
+[2024-03-27 19:39:09.279][INF][Px2514][Tx3d18] asst::Assistant::set_instance_option | key 3 value 0
+[2024-03-27 19:39:09.279][TRC][Px2514][Tx2f90] asst::RecruitConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.279][ERR][Px2514][Tx3d18] m_controller  is not inited
+[2024-03-27 19:39:09.279][INF][Px2514][Tx3d18] asst::Assistant::set_instance_option | key 4 value 0
+[2024-03-27 19:39:09.279][TRC][Px2514][Tx2f90] asst::RecruitConfig :: asst::AbstractConfig::load | leave, 0 ms
+[2024-03-27 19:39:09.279][TRC][Px2514][Tx2f90] asst::BattleDataConfig :: asst::AbstractConfig::load | enter
+[2024-03-27 19:39:09.279][INF][Px2514][Tx2f90] resource\battle_data.json
+[2024-03-27 19:39:09.283][TRC][Px2514][Tx2f90] asst::BattleDataConfig::parse | enter
+[2024-03-27 19:39:09.284][TRC][Px2514][Tx2f90] asst::BattleDataConfig::parse | leave, 0 ms
+[2024-03-27 19:39:09.284][TRC][Px2514][Tx2f90] asst::BattleDataConfig :: 

@@ -2,7 +2,6 @@
 // Created by 22753 on 2024/3/25.
 //
 
-//#pragma once
 #ifndef QUEUE_QUEUE_H
 #define QUEUE_QUEUE_H
 
@@ -52,3 +51,5 @@ template<typename T, int size>
 void Queue<T, size>::push(T x) {
     data[++rear_pr] = x;
 }
+
+#endif //QUEUE_QUEUE_H

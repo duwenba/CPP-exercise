@@ -3,7 +3,7 @@ project(Stack)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(List main.cpp
+add_executable(Stack main.cpp
         Stack.hpp
         Linked_Stack.hpp
         )

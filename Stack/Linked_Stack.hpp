@@ -2,9 +2,12 @@
 // Created by 22753 on 2024/3/25.
 //
 #pragma once
-
+#ifndef LINKSTACK_H
+#define LINKSTACK_H
 
 //stack<int>
+#include <stdexcept>
+
 
 
 template<typename T>
@@ -17,11 +20,22 @@ public:
     ~Stack() = default;
     explicit Stack(T x): data(x){};
     Stack(T a[], int n);
-    T pop();
-    T top();
+    T *pop();
+    T* top();
     void  push(T x);
     bool empty();
+    void reverse();
 };
+
+template<typename T>
+void Stack<T>::reverse() {
+    if(empty()) { throw std::runtime_error("Stack is empty !!"); }
+    Stack<T> p;
+    while (!empty()) {
+       p.push(*pop());
+    }
+    this->next = p.next;
+}
 
 template<typename T>
 void Stack<T>::push(T x) {
@@ -31,9 +45,9 @@ void Stack<T>::push(T x) {
 }
 
 template<typename T>
-T Stack<T>::top() {
-    if(empty()) { throw "Stack is empty !!"; }
-    return this->next->data;
+T* Stack<T>::top() {
+    if(empty()) { throw std::runtime_error("Stack is empty !!"); }
+    return &(this->next->data);
 }
 
 template<typename T>
@@ -42,12 +56,12 @@ bool Stack<T>::empty() {
 }
 
 template<typename T>
-T Stack<T>::pop() {
-    if(empty()) { throw "Stack is empty !!"; }
+T* Stack<T>::pop() {
+    if(empty()) { throw std::runtime_error("Stack is empty !!"); }
     Stack<T> *top = this->next;
     this->next = top->next;
     T result = top->data;
-    return top->data;
+    return &(top->data);
 }
 
 template<typename T>
@@ -56,3 +70,5 @@ Stack<T>::Stack(T *a, int n) {
         push(a[i]);
     }
 }
+
+#endif //LINKSTACK_H

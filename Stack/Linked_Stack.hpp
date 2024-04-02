@@ -20,8 +20,8 @@ public:
     ~Stack() = default;
     explicit Stack(T x): data(x){};
     Stack(T a[], int n);
-    T *pop();
-    T* top();
+    T& pop();
+    T& top();
     void  push(T x);
     bool empty();
     void reverse();
@@ -32,7 +32,7 @@ void Stack<T>::reverse() {
     if(empty()) { throw std::runtime_error("Stack is empty !!"); }
     Stack<T> p;
     while (!empty()) {
-       p.push(*pop());
+       p.push(pop());
     }
     this->next = p.next;
 }
@@ -45,9 +45,9 @@ void Stack<T>::push(T x) {
 }
 
 template<typename T>
-T* Stack<T>::top() {
+T& Stack<T>::top() {
     if(empty()) { throw std::runtime_error("Stack is empty !!"); }
-    return &(this->next->data);
+    return this->next->data;
 }
 
 template<typename T>
@@ -56,12 +56,12 @@ bool Stack<T>::empty() {
 }
 
 template<typename T>
-T* Stack<T>::pop() {
+T& Stack<T>::pop() {
     if(empty()) { throw std::runtime_error("Stack is empty !!"); }
     Stack<T> *top = this->next;
     this->next = top->next;
-    T result = top->data;
-    return &(top->data);
+//    T result = top->data;
+    return top->data;
 }
 
 template<typename T>

@@ -1,6 +1,0 @@
-# ninja log v5
-30	461	7335963186560775	CMakeFiles/Queue.dir/main.cpp.obj	a2e5815c9fa2d276
-1	204	7335963184014773	CMakeFiles/Queue.dir/cmake-build-debug/CMakeFiles/3.27.8/CompilerIdCXX/CMakeCXXCompilerId.cpp.obj	449927c8304083ef
-12	219	7335963184175070	CMakeFiles/Queue.dir/CMakeFiles/3.27.8/CompilerIdCXX/CMakeCXXCompilerId.cpp.obj	fcca3ca4c3a8fa46
-2	1892	7335963767003407	Queue.exe	84266d8cd05c7238
-0	180	7335964721172056	build.ninja	5638740b1924c777

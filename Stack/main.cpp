@@ -60,15 +60,15 @@ int main(){
     int x,y;
 
     while(!mStack.empty()){
-        auto box = mStack.top();
+        auto& box = mStack.top();
 
-        if(box->x == 7 && box->y == 7){
+        if(box.x == 7 && box.y == 7){
             break;
         }
-        (box->direction)++;
-        for(int * i = &(box->direction); *i < 4; (*i)++){
-            x = box->x + Direction[*i][0];
-            y = box->y + Direction[*i][1];
+        (box.direction)++;
+        for(int * i = &(box.direction); *i < 4; (*i)++){
+            x = box.x + Direction[*i][0];
+            y = box.y + Direction[*i][1];
             if(a[y][x]==0){
                 Box next = {x,y,-1};
                 mStack.push(next);
@@ -76,9 +76,9 @@ int main(){
                 break;
             }
         }
-        if(box->direction >= 4){
+        if(box.direction >= 4){
             mStack.pop();
-            a[box->y][box->x] = 0;
+            a[box.y][box.x] = 0;
         }
 //        display();
     }
@@ -86,9 +86,9 @@ int main(){
     //output path
     mStack.reverse();
     while(!mStack.empty()){
-        auto box = mStack.top();
+        auto& box = mStack.top();
         mStack.pop();
-        printf("(%d,%d) -> ",box->x,box->y);
+        printf("(%d,%d) -> ",box.x,box.y);
     }
     printf("жу╣Ц");
 

@@ -11,9 +11,9 @@
 namespace pi {
     namespace ast {
 
-        class ExpressionStatement : public Node {
+        class ExpressionStatement : public Statement {
         public:
-            ExpressionStatement() : Node(Type::EXPRESSION_STATEMENT) {};
+            ExpressionStatement() : Statement(Type::EXPRESSION_STATEMENT) {};
             ~ExpressionStatement() override = default;
 
         public:

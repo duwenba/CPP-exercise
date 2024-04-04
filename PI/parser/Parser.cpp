@@ -25,6 +25,20 @@ std::map<Token::Type, int> Parser::precedences = {
 */
 };
 
+
+std::map<Token::Type, Parser::prefixFn > Parser::prefixParseFns = {
+        {Token::TOKEN_INTEGER,     &Parser::parseInteger},
+        {Token::TOKEN_LPAREN,      &Parser::parseGroup},
+
+};
+
+std::map<Token::Type, Parser::infixFn > Parser::infixParseFns = {
+        {Token::TOKEN_PLUS,         &Parser::parseInfix},
+        {Token::TOKEN_MINUS,        &Parser::parseInfix},
+        {Token::TOKEN_ASTERISK,     &Parser::parseInfix},
+        {Token::TOKEN_SLASH,        &Parser::parseInfix},
+};
+
 Parser::Parser(const std::shared_ptr<lexer::Lexer> &lexer) : lexer(lexer) {
     nextToken();
     nextToken();
@@ -61,9 +75,29 @@ void Parser::peekError(Token::Type type) {
 }
 
 int Parser::currentPrecedence() {
-
+    auto it = precedences.find(currentToken.type());
+    if (it != precedences.end()) {
+        return it->second;
+    }
+    return LOWEST;
 }
 
 int Parser::peekPrecedence() {
-
+    auto it = precedences.find(peekToken.type());
+    if (it != precedences.end()) {
+        return it->second;
+    }
+    return LOWEST;
 }
+
+void Parser::addError(const string &msg) {
+    //add to errors
+    errors.push_back(msg);
+}
+
+
+
+
+
+
+

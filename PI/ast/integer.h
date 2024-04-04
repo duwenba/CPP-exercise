@@ -12,6 +12,7 @@ namespace pi {
     namespace ast{
         class Integer : public Expression {
         public:
+            Integer() = default;
             Integer(int value)  : Expression(INTEGER) {};
             ~Integer() override = default;
 

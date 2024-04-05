@@ -16,6 +16,13 @@ namespace pi {
             ExpressionStatement() : Statement(Type::EXPRESSION_STATEMENT) {};
             ~ExpressionStatement() override = default;
 
+            virtual json::value toJson() override {
+                json::value json;
+                json["type"] = name();
+                json["expression"] = expression->toJson();
+                return json;
+            }
+
         public:
             std::shared_ptr<Expression> expression;
         };// ExpressionStatement

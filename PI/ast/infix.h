@@ -19,6 +19,15 @@ namespace pi {
 
             ~infix() override = default;
 
+            virtual json::value toJson() override {
+                json::value  json;
+                json["type"] = name();
+                json["operator"] = mOperator;
+                json["left"] = left->toJson();
+                json["right"] = right->toJson();
+                return json;
+            }
+
         public:
             string mOperator;
             shared_ptr<Expression> left;

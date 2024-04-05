@@ -15,4 +15,4 @@ file(GLOB_RECURSE SOURCES
 )
 
 add_executable(tokens ${SOURCES} tokens.cpp)
-add_executable(parser ${SOURCES} parser.cpp)
+add_executable(ast ${SOURCES} ast.cpp)

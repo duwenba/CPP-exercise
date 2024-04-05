@@ -16,6 +16,13 @@ namespace pi {
             Integer(int value)  : Expression(INTEGER) {};
             ~Integer() override = default;
 
+            virtual json::value toJson() override {
+                json::value json;
+                json["value"] = std::to_string(value);
+                json["type"] = name();
+                return json;
+            }
+
         public:
             int64_t value;
         };

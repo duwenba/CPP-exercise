@@ -45,6 +45,8 @@ namespace pi {
 
             Type getType() const { return type; }
             string name() const;
+
+            virtual json::value toJson() = 0 ;
         public:
             Type type;
             Token token;
@@ -56,6 +58,8 @@ namespace pi {
             Expression() = default;
             Expression(Type type): Node(type) {};
             ~Expression() override = default;
+
+
         };
 
         class Statement : public Node {
@@ -63,6 +67,7 @@ namespace pi {
             Statement() = default;
             Statement(Type type): Node(type) {};
             ~Statement() override = default;
+
         };
     }
 }

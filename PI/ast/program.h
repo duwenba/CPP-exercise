@@ -1,9 +1,8 @@
 //
 // Created by 22753 on 2024/4/4.
 //
+#pragma once
 
-#ifndef PI_PROGRAM_H
-#define PI_PROGRAM_H
 
 
 #include <ast/node.h>
@@ -41,4 +40,4 @@ namespace pi::ast {
 } // ast
 
 
-#endif //PI_PROGRAM_H
+

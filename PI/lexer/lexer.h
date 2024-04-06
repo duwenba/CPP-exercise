@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_LEXER_H
-#define PI_LEXER_H
+#pragma once
+
 
 //#define DEBUG true
 
@@ -43,4 +43,4 @@ namespace pi {
 }
 
 
-#endif //PI_LEXER_H
+

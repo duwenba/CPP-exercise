@@ -2,8 +2,7 @@
 // Created by 22753 on 2024/4/6.
 //
 
-#ifndef PI_EVALUATOR_H
-#define PI_EVALUATOR_H
+#pragma once
 
 #include <ast/header.h>
 #include <object/header.h>
@@ -32,5 +31,3 @@ namespace pi::eval {
 
 } // eval
 // pi
-
-#endif //PI_EVALUATOR_H

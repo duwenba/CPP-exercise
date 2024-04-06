@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_PARSER_H
-#define PI_PARSER_H
+#pragma once
+
 
 #include <memory>
 #include <list>
@@ -72,4 +72,3 @@ namespace pi::parser {
     } // Parser
 // pi
 
-#endif //PI_PARSER_H

@@ -2,9 +2,7 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_INTEGER_H
-#define PI_INTEGER_H
-
+#pragma once
 #include <ast/node.h>
 
 namespace pi {
@@ -29,4 +27,4 @@ namespace pi {
     }
 }
 
-#endif //PI_INTEGER_H
+

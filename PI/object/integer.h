@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/6.
 //
 
-#ifndef PI_OBJ_INTEGER_H
-#define PI_OBJ_INTEGER_H
+#pragma once
+
 
 #include <object/object.h>
 
@@ -26,4 +26,4 @@ namespace pi::obj {
 } // obj
 // pi
 
-#endif //PI_INTEGER_H
+

@@ -2,8 +2,7 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_EXPRESSIONSTATEMENT_H
-#define PI_EXPRESSIONSTATEMENT_H
+#pragma once
 
 #include <ast/node.h>
 #include <memory>
@@ -30,4 +29,4 @@ namespace pi {
     } // ast
 } // pi
 
-#endif //PI_EXPRESSIONSTATEMENT_H
+

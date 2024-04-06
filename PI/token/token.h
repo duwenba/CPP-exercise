@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_TOKEN_H
-#define PI_TOKEN_H
+#pragma once
+
 
 
 #include <string>
@@ -63,4 +63,3 @@ namespace pi::token {
 }
 
 
-#endif //PI_TOKEN_H

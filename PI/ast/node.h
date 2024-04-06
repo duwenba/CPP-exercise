@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_NODE_H
-#define PI_NODE_H
+#pragma once
+
 
 #include <token/token.h>
 #include <string>
@@ -73,4 +73,4 @@ namespace pi {
 }
 
 
-#endif //PI_NODE_H
+

@@ -2,8 +2,7 @@
 // Created by 22753 on 2024/4/4.
 //
 
-#ifndef PI_INFIX_H
-#define PI_INFIX_H
+#pragma once
 
 #include <memory>
 #include <ast/node.h>
@@ -37,4 +36,4 @@ namespace pi {
     } // ast
 } // pi
 
-#endif //PI_INFIX_H
+

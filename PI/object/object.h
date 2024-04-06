@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/6.
 //
 
-#ifndef PI_OBJECT_H
-#define PI_OBJECT_H
+#pragma once
+
 
 #include <map>
 #include <string>
@@ -60,4 +60,3 @@ namespace pi::obj {
 } // obj
 // pi
 
-#endif //PI_OBJECT_H

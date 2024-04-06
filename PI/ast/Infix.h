@@ -13,11 +13,11 @@ using std::shared_ptr;
 namespace pi {
     namespace ast {
 
-        class infix : public Expression {
+        class Infix : public Expression {
         public:
-            infix() : Expression(Type::INFIX) {};
+            Infix() : Expression(Type::INFIX) {};
 
-            ~infix() override = default;
+            ~Infix() override = default;
 
             virtual json::value toJson() override {
                 json::value  json;

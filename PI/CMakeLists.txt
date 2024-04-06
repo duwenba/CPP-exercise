@@ -12,6 +12,8 @@ file(GLOB_RECURSE SOURCES
         "configor/*.hpp"
         "ast/*.cpp"
         "parser/*.cpp"
+        "object/*.cpp"
+        "evaluator/*.cpp"
 )
 
 add_executable(tokens ${SOURCES} tokens.cpp)

@@ -42,6 +42,8 @@ namespace pi::parser {
             void addError(const string &msg);
             int  currentPrecedence();
             int  peekPrecedence() ;
+            std::list<string> getErrors() { return errors;};
+
             //prefix
             std::shared_ptr<ast::Expression> parseInteger();
             std::shared_ptr<ast::Expression> parseGroup();

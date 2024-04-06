@@ -27,8 +27,8 @@ shared_ptr<Object> Evaluator::evalInfix(const std::string &op,shared_ptr<pi::obj
 
 shared_ptr<Object>
 Evaluator::evalIntegerInfix(const string &op, shared_ptr<Object> &left, shared_ptr<Object> &right) {
-    auto l = dynamic_pointer_cast<Integer>(left);
-    auto r = dynamic_pointer_cast<Integer>(right);
+    auto l = std::dynamic_pointer_cast<obj::Integer>(left);
+    auto r = std::dynamic_pointer_cast<obj::Integer>(right);
     switch (op[0]) {
         case '+':
             return Object::newInteger(l->value + r->value);

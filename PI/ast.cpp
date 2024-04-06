@@ -16,7 +16,13 @@ int main() {
     std::shared_ptr<Lexer> lexer(new Lexer("./../code.pi"));
     std::shared_ptr<Parser> parser(new Parser(lexer));
     auto program = parser->parseProgram();
-
+    auto errors = parser->getErrors();
+    if(!errors.empty()){
+        for (auto& error : errors) {
+            std::cout << error << std::endl;
+        }
+        return -1;
+    }
     json::value j = program->toJson();
     std::ofstream ofs("./../ast.json") ;
     ofs << json::dump(j) << std::endl;

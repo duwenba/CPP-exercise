@@ -2,8 +2,8 @@
 // Created by 22753 on 2024/4/6.
 //
 
-#ifndef PI_INTEGER_H
-#define PI_INTEGER_H
+#ifndef PI_OBJ_INTEGER_H
+#define PI_OBJ_INTEGER_H
 
 #include <object/object.h>
 

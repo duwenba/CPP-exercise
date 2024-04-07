@@ -148,4 +148,11 @@ Token Lexer::nextToken() {
     }
 }
 
+Lexer::Lexer(const char *buf, unsigned long long int len) {
+    ch = 0;
+    pos = 0;
+    next_pos = 0;
+    source.assign(buf, len);
+}
+
 

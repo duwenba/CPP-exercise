@@ -19,6 +19,7 @@ namespace pi {
         public:
             Lexer() = default;
             Lexer(const string & file);
+            Lexer(const char * buf, unsigned long long int len);
             ~Lexer() = default;
 
             Token nextToken();

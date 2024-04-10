@@ -38,7 +38,9 @@ namespace pi::token {
         };
 
         Token();
-
+/**构造函数
+*@param type        类型
+*@param literal     字面值*/
         Token(Type type, string &literal);
 
         ~Token() = default;

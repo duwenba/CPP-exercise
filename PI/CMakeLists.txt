@@ -14,6 +14,7 @@ file(GLOB_RECURSE SOURCES
         "parser/*.cpp"
         "object/*.cpp"
         "evaluator/*.cpp"
+        "opcode/*.cpp"
 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/build/bin/DEBUG)

@@ -37,21 +37,22 @@ public:
     */
     void preorder(void (*visit)(T &));
 
-    /// 中序遍历
-    /// @param visit : 访问函数
-    ///@note 访问函数的定义为void visit(T&
-    /// value)，其参数为当前节点的值，可以对其进行操作
+    /** 中序遍历
+    * @param visit : 访问函数
+    * @note 访问函数的定义为void visit(T& value)，其参数为当前节点的值，可以对其进行操作
+    */
     void inorder(void (*visit)(T &));
 
-    /// 后序遍历
-    /// @param visit : 访问函数
-    ///@note 访问函数的定义为void visit(T&
-    /// value)，其参数为当前节点的值，可以对其进行操作
+    /** 后序遍历
+    * @param visit : 访问函数
+    * @note 访问函数的定义为void visit(T& value)，其参数为当前节点的值，可以对其进行操作
+    */
     void postorder(void (*visit)(T &));
 
-    /// 层序遍历
-    /// @param visit : 访问函数
-    ///@note 访问函数的定义为void visit(T& value)，其参数为当前节点的值，可以对其进行操作
+    /** 层序遍历
+    * @param visit : 访问函数
+    * @note 访问函数的定义为void visit(T& value)，其参数为当前节点的值，可以对其进行操作
+    */
     void levelorder(void (*visit)(T &));
 
     // 求树的高度

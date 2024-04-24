@@ -1,12 +1,14 @@
 #pragma once
 
-#include <string>
 #include <cstring>
-#include <stack>
-#include <memory>
 #include <iostream>
+#include <memory>
+#include <stack>
+#include <queue>
+#include <string>
 
 using std::shared_ptr;
+using std::queue;
 using std::stack;
 using std::string;
 
@@ -16,29 +18,59 @@ public:
     BTree() = default;
 
     /** Constructor with string input like "A(B(C,D),E)"
-     * @param str :å­—ç¬¦ä¸²è¾“å…¥
-     * @note å­—ç¬¦ä¸²è¾“å…¥å¿…é¡»ç¬¦åˆæ‹¬å·åŒ¹é…çš„æ ¼å¼--"å€¼(å·¦å­æ ‘,å³å­æ ‘))"ï¼Œå¯ä»¥åµŒå¥—å¤šå±‚æ‹¬å·,æ¯”å¦‚"A(B(C,D),E)"
+     * @param str :×Ö·û´®ÊäÈë
+     * @note
+     * ×Ö·û´®ÊäÈë±ØĞë·ûºÏÀ¨ºÅÆ¥ÅäµÄ¸ñÊ½--"Öµ(×ó×ÓÊ÷,ÓÒ×ÓÊ÷))"£¬¿ÉÒÔÇ¶Ì×¶à²ãÀ¨ºÅ,±ÈÈç"A(B(C,D),E)"
      */
     explicit BTree(const char *str);
 
-    explicit BTree(const T& value) : value(value), left(nullptr), right(nullptr) {};
+    explicit BTree(const T &value)
+            : value(value), left(nullptr), right(nullptr) {};
 
     ~BTree() = default;
 
     void display();
 
+    /** Ç°Ğò±éÀú
+    * @param visit : ·ÃÎÊº¯Êı
+    * @note ·ÃÎÊº¯ÊıµÄ¶¨ÒåÎªvoid visit(T& value)£¬Æä²ÎÊıÎªµ±Ç°½ÚµãµÄÖµ£¬¿ÉÒÔ¶ÔÆä½øĞĞ²Ù×÷
+    */
+    void preorder(void (*visit)(T &));
+
+    /// ÖĞĞò±éÀú
+    /// @param visit : ·ÃÎÊº¯Êı
+    ///@note ·ÃÎÊº¯ÊıµÄ¶¨ÒåÎªvoid visit(T&
+    /// value)£¬Æä²ÎÊıÎªµ±Ç°½ÚµãµÄÖµ£¬¿ÉÒÔ¶ÔÆä½øĞĞ²Ù×÷
+    void inorder(void (*visit)(T &));
+
+    /// ºóĞò±éÀú
+    /// @param visit : ·ÃÎÊº¯Êı
+    ///@note ·ÃÎÊº¯ÊıµÄ¶¨ÒåÎªvoid visit(T&
+    /// value)£¬Æä²ÎÊıÎªµ±Ç°½ÚµãµÄÖµ£¬¿ÉÒÔ¶ÔÆä½øĞĞ²Ù×÷
+    void postorder(void (*visit)(T &));
+
+    /// ²ãĞò±éÀú
+    /// @param visit : ·ÃÎÊº¯Êı
+    ///@note ·ÃÎÊº¯ÊıµÄ¶¨ÒåÎªvoid visit(T& value)£¬Æä²ÎÊıÎªµ±Ç°½ÚµãµÄÖµ£¬¿ÉÒÔ¶ÔÆä½øĞĞ²Ù×÷
+    void levelorder(void (*visit)(T &));
+
+    // ÇóÊ÷µÄ¸ß¶È
+    int height();
+
+    // ÇóÒ¶×Ó½ÚµãµÄÊıÁ¿
+    int countLeaves();
+
 private:
-
     T value;
-    shared_ptr<BTree<T> > left;
-    shared_ptr<BTree<T> > right;
-
+    shared_ptr<BTree<T>> left;
+    shared_ptr<BTree<T>> right;
 };
 
 template<typename T>
 void BTree<T>::display() {
     std::cout << value;
-    if (left == nullptr && right == nullptr) return;
+    if (left == nullptr && right == nullptr)
+        return;
     std::cout << "(";
     if (left) {
         left->display();
@@ -53,8 +85,8 @@ void BTree<T>::display() {
 template<typename T>
 BTree<T>::BTree(const char *str) {
     int flag = 0;
-    BTree<T> * curr = nullptr;
-    stack<BTree<T>*> stk;
+    BTree<T> *curr = nullptr;
+    stack<BTree<T> *> stk;
     for (int i = 0; i < strlen(str); i++) {
         switch (str[i]) {
             case '(':
@@ -67,7 +99,8 @@ BTree<T>::BTree(const char *str) {
                 stk.pop();
                 break;
             case ',':
-                // set the flag to 0 to indicate that the next character is the right child of the current node
+                // set the flag to 0 to indicate that the next character is the right
+                // child of the current node
                 flag = 2;
                 break;
             default:
@@ -75,15 +108,107 @@ BTree<T>::BTree(const char *str) {
                 if (curr == nullptr) {
                     curr = this;
                     this->value = str[i];
-                }
-                else curr = new BTree<T>(str[i]);
+                } else
+                    curr = new BTree<T>(str[i]);
                 // set the left or right child of the current node based on the flag
                 if (flag == 1) {
-                    stk.top()->left = shared_ptr<BTree<T> >(curr);
+                    stk.top()->left = shared_ptr<BTree<T>>(curr);
                 } else if (flag == 2) {
-                    stk.top()->right = shared_ptr<BTree<T> >(curr);
+                    stk.top()->right = shared_ptr<BTree<T>>(curr);
                 }
                 break;
         }
     }
+}
+
+// Ç°Ğò±éÀú
+template<typename T>
+void BTree<T>::preorder(void (*visit)(T &)) {
+    if (this->value != '\0') {
+        visit(this->value);
+    }
+    if (this->left) {
+        this->left->preorder(visit);
+    }
+    if (this->right) {
+        this->right->preorder(visit);
+    }
+}
+
+// ÖĞĞò±éÀú
+template<typename T>
+void BTree<T>::inorder(void (*visit)(T &)) {
+    if (this->left) {
+        this->left->inorder(visit);
+    }
+    if (this->value != '\0') {
+        visit(this->value);
+    }
+    if (this->right) {
+        this->right->inorder(visit);
+    }
+}
+
+// ºóĞò±éÀú
+template<typename T>
+void BTree<T>::postorder(void (*visit)(T &)) {
+    if (this->left) {
+        this->left->postorder(visit);
+    }
+    if (this->right) {
+        this->right->postorder(visit);
+    }
+    if (this->value != '\0') {
+        visit(this->value);
+    }
+}
+
+// ²ãĞò±éÀú
+template<typename T>
+void BTree<T>::levelorder(void (*visit)(T &)) {
+    queue<BTree<T> *> q;
+    q.push(this);
+    while (!q.empty()) {
+        BTree<T> *node = q.front();
+        q.pop();
+        if (node->value != '\0') {
+            visit(node->value);
+        }
+        if (node->left) {
+            q.push(node->left.get());
+        }
+        if (node->right) {
+            q.push(node->right.get());
+        }
+    }
+}
+
+// ÇóÊ÷µÄ¸ß¶È
+template<typename T>
+int BTree<T>::height() {
+    int leftHeight = 0, rightHeight = 0;
+    if (this->left) {
+        leftHeight = this->left->height();
+    }
+    if (this->right) {
+        rightHeight = this->right->height();
+    }
+    return 1 + std::max(leftHeight, rightHeight);
+}
+
+// ÇóÒ¶×Ó½ÚµãµÄÊıÁ¿
+template<typename T>
+int BTree<T>::countLeaves() {
+    int count = 0;
+    if (this->left == nullptr && this->right == nullptr) {
+        count++;
+    } else {
+        if (this->left) {
+            count += this->left->countLeaves();
+        }
+        if (this->right) {
+            count += this->right->countLeaves();
+        }
+    }
+    return count;
 }

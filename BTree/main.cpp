@@ -1,22 +1,29 @@
 #include "BTree.hpp"
 
-
-//test the BTree class
+//²âÊÔÓÃÀı
 int main() {
-    BTree<> tree("A(B(C,D),E(F,G)");
-    tree.display();
-    return 0;
-}
+  BTree<char> bt("A(B(C,D),E)");
+  bt.display();
+  std::cout << std::endl;
+  
+  //¶¨ÒåÒª¶ÔÃ¿Ò»¸ö½Úµã½øĞĞµÄ²Ù×÷ ---- ´òÓ¡½ÚµãÖµ
+  auto printChar = [](char & c) { std::cout << c << " "; };
 
-/** ç”¨å­—ç¬¦è¡¨ç¤ºæ ‘çš„ç»“æ„ï¼š
- *
- *
- *      â” C
- *  â” B â”«
- *  â”«   â”— D
- *A â”«
- *  â”«   â” F
- *  â”— E â”«
- *      â”— G
- */
-/*
+  //²âÊÔ±éÀú
+  std::cout << "ÏÈĞò±éÀú£º";
+  bt.preorder(printChar);
+  std::cout << std::endl;
+  std::cout << "ÖĞĞò±éÀú£º";
+  bt.inorder(printChar);
+  std::cout << std::endl;
+  std::cout << "ºóĞò±éÀú£º";
+  bt.postorder(printChar);
+  std::cout << std::endl;
+  std::cout << "²ãĞò±éÀú£º";
+  bt.levelorder(printChar);
+  std::cout << std::endl;
+
+  std::cout << "Ê÷µÄ¸ß¶ÈÎª£º"     << bt.height()  << std::endl
+            << "Ê÷µÄÒ¶×Ó½ÚµãÊıÎª£º"<< bt.countLeaves();
+  return 0;
+}

@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <fstream>
 
-
+namespace font::table {
 /**
 | Type   | Name             | Description                                            |
 | ------ | -----------      | ------------------------------------------------------ |
@@ -19,16 +19,16 @@
 | uint16 | entrySelector    | log2(maximum power of 2 <= numTables)                  |
 | uint16 | rangeShift       | numTables*16-searchRange                               |
  */
-class FontDirection {
-public:
-    FontDirection(std::basic_ifstream<char> ifstream);
+    class FontDirection {
+    public:
+        FontDirection() = default;
+        std::uint32_t scalerType = 0;
+        std::uint16_t numTables = 0;
+        std::uint16_t searchRange = 0;
+        std::uint16_t entrySelector = 0;
+        std::uint16_t rangeShift = 0;
+    };
 
-    Uint32 scalerType;
-    Int16 numTables;
-    Int16 searchRange;
-    Int16 entrySelector;
-    Int16 rangeShift;
-};
-
+}
 
 #endif //TRUETYPE_FONTDIRECTION_H

@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION 3.27)
-project(TrueType)
+project(Tables)
 
 set(CMAKE_CXX_STANDARD 23)
 
+include_directories("./")
+
 file(GLOB_RECURSE SOURCES
-        "TrueType/*.cpp"
+        "Tables/*.cpp"
+        "Readers/*.cpp"
 )
 
 
-add_executable(TrueType ${SOURCES} main.cpp)
+add_executable(Tables ${SOURCES} main.cpp)

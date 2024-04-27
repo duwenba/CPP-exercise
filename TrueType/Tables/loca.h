@@ -24,7 +24,7 @@ namespace font::table{
         }
 	};
 
-    class Sloca : public loca {
+    class Sloca  {
     protected:
         typedef  uint16_t OffsetType;
         typedef  vector<uint16_t> OffsetTable;

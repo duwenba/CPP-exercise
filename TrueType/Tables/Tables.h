@@ -8,5 +8,8 @@
 #include "FontDirection.h"
 #include "TableDirection.h"
 #include "head.h"
+#include "loca.h"
+
+#include "SimpleGlyphs.h"
 
 #endif //TABLES_TABLES_H

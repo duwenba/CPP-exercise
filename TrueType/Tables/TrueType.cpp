@@ -6,10 +6,11 @@
 #include <Readers/Readers.h>
 
 #include <memory>
+
 using namespace font::reader;
 
-string readtag(uint32_t  input ){
-    char* chars = new char[5];
+string readtag(uint32_t input) {
+    char *chars = new char[5];
     chars[0] = static_cast<uint8_t>(input >> 24);
     chars[1] = static_cast<uint8_t>((input >> 16) & 0xFF);
     chars[2] = static_cast<uint8_t>((input >> 8) & 0xFF);
@@ -23,21 +24,37 @@ TrueType::TrueType(const string &file_path) {
     if (!font_file.is_open()) {
         throw runtime_error("Failed to open font file: " + file_path);
     }
+
     font_direction = readeFontDirection(font_file);
-//    cout << " i " << " tag \t" << "offset    " << "length  " << endl;
-//    cout << "-----------------------------------" << endl;
     for (int i = 0; i < font_direction.numTables; i++) {
         auto table = std::make_shared<TableDirection>(readTableDirection(font_file));
         table_direction[readtag(table->tag)] = table;
-//        cout << std::setw(2) << i << "  "<< readtag(table->tag)<<"\t";
-//        cout << std::setw(7) << table->offset<<"\t" ;
-//        cout << std::setw(7) << table->length << endl;
     }
+
+    font_file.seekg(table_direction.at("maxp")->offset);
+    numGlyphs =  readnumGlyphs(font_file);
 }
 
 head TrueType::gethead() {
-    font_file.seekg(table_direction["head\0"]->offset);
+    auto table = table_direction.at("head");
+    font_file.seekg(table->offset);
     auto m_head = readhead(font_file);
     return m_head;
+}
+
+font::table::loca TrueType::getloca() {
+    auto table = table_direction.at("loca");
+    font_file.seekg(table->offset);
+    auto m_loca = readloca(font_file, numGlyphs);
+    return m_loca;
+}
+
+font::table::Glyphs TrueType::getGlyphs(uint16_t index) {
+    auto table = table_direction.at("glyf");
+    font_file.seekg(table->offset + getloca().offsetAt(index));
+    auto m_glyphs = Glyphs();
+    m_glyphs.glyphs_des = readGlyphsDes(font_file);
+    m_glyphs.glyphs_data = readGlyphsData(font_file, m_glyphs.glyphs_des.numberOfContours);
+    return m_glyphs;
 }
 

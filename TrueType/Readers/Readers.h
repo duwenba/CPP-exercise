@@ -21,17 +21,17 @@ using std::shared_ptr;
 using namespace font::table;
 
 namespace font::reader {
-    FontDirection readeFontDirection(ifstream & file);
+
 
     template<typename T,
-            typename std::enable_if<std::is_unsigned<T>::value && (sizeof(T) >= 1 && sizeof(T) <= 4), bool>::type = true>
-    void toBigEndian(T &value) {
+            typename std::enable_if<std::is_integral<T>::value && !std::is_same<T, bool>::value, bool>::type = true>
+    void toBigEndian(T & value) {
         if constexpr (sizeof(T) == 1) {
             // uint8_t本身就是1字节，无需转换字节序
             return;
         } else {
             // 对于2字节和4字节类型，我们需要交换高低字节
-            auto bytes = reinterpret_cast<uint8_t *>(&value);
+            auto bytes = reinterpret_cast<uint8_t*>(&value);
             if constexpr (sizeof(T) == 2) { // uint16_t
                 std::swap(bytes[0], bytes[1]);
             } else if constexpr (sizeof(T) == 4) { // uint32_t
@@ -42,10 +42,17 @@ namespace font::reader {
     }
 
     template<typename T>
-    T read(std::ifstream &file, T &number) {
+    void read(std::ifstream &file, T &number) {
         file.read(reinterpret_cast<char *>(&number), sizeof(number));
         toBigEndian(number);
-//        std::cout << "number " <<std::bitset<32>( number).to_string()<< std::endl;
+    }
+
+    template<typename T>
+    /// retrun the context
+    T read(std::ifstream &file) {
+        T number = 0;
+        file.read(reinterpret_cast<char *>(&number), sizeof(number));
+        toBigEndian(number);
         return number;
     }
 
@@ -56,10 +63,21 @@ namespace font::reader {
         std::cout << name << ":\t0x" << ss.str() << std::endl;
     }
 
+    bool checkBit(uint8_t flag,uint8_t index);
 
+    FontDirection readeFontDirection(ifstream & file);
     TableDirection readTableDirection(ifstream & file);
 
     head readhead(ifstream & file);
+
+    loca readloca(ifstream & file,uint16_t numGlyphs);
+
+    uint16_t readnumGlyphs(ifstream & file);
+
+    GlyphsDes readGlyphsDes(ifstream & file);
+    GlyphsData readGlyphsData(ifstream & file,int16_t numberOfContours);
+
+    vector<int16_t> readPoints(ifstream & file,const vector<uint8_t> & flags,bool isX);
 
 
 }

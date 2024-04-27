@@ -26,6 +26,8 @@ private:
     font::table::FontDirection font_direction;
 
 public:
+    //numGlyphs
+    uint16_t numGlyphs;
     std::unordered_map<
             string ,
             shared_ptr<font::table::TableDirection> > table_direction;
@@ -38,6 +40,10 @@ public:
     }
 
     font::table::head gethead();
+
+    font::table::loca getloca();
+
+    font::table::Glyphs getGlyphs(uint16_t index);
 
 };
 

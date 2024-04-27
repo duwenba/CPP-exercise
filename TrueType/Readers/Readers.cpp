@@ -83,7 +83,8 @@ namespace font::reader {
             m_GlyphsData.flags.push_back(flag);
             ++i;
             if (checkBit(flag, 3)) {
-                for (int j = 0; j < read<uint8_t>(file) ; ++j) {
+                auto repeat = read<uint8_t>(file);
+                for (int j = 0; j < repeat ; ++j) {
                     m_GlyphsData.flags.push_back(flag);
                     ++i;
                 }

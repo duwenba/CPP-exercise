@@ -3,6 +3,7 @@
 //
 #include "spanningTree.h"
 #include <limits>
+#include <iostream>
 
 
 
@@ -26,16 +27,27 @@ Matrix mat = {
 
 int main() {
     // 深度优先生成树
-//    auto dfsTree = dfsSpanningTree(mat);
-//    for (auto &tree : dfsTree) {
-//        printTree(tree);
-//    }
+    auto dfsTree = dfsSpanningTree(mat);
+    // 打印生成树
+    std::cout << "DFS Spanning Tree:" << std::endl;
+    for (auto &tree : dfsTree) {
+        printTree(tree);
+    }
+    std::cout << "\n";
 
     // 宽度优先生成树
     auto bfsTree = bfsSpanningTree(mat);
+    // 打印生成树
+    std::cout << "BFS Spanning Tree:" << std::endl;
     for (auto &tree : bfsTree) {
         printTree(tree);
     }
+    std::cout << "\n";
+
+    // PRIM 算法生成最小生成树
+    std::cout << "PRIM Spanning Tree:" << std::endl;
+    primSpanningTree(mat, 0);
+    std::cout << "\n";
 
     return 0;
 }

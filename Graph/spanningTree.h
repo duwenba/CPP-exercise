@@ -17,8 +17,10 @@ struct TreeNode {
         }
     }
 };
-
-void printTree(TreeNode* root);
+/// 打印树的结构
+///@param root  根节点
+///@param first  是否是第一个节点(辅助参数, 默认为true, 无需传入)
+void printTree(TreeNode* root, bool first = true);
 
 /// 深度优先遍历得到生成树
 ///@param graph  邻接矩阵
@@ -29,7 +31,7 @@ std::vector<TreeNode *> dfsSpanningTree(const Matrix& graph);
 std::vector<TreeNode *> bfsSpanningTree(const Matrix& graph) ;
 
 // Prim算法得到生成树
-void primSpanningTree(const Matrix& graph, std::vector<int>& parent, int start) ;
+void primSpanningTree(const Matrix& graph, int start) ;
 
 // Kruskal算法得到最小生成树
-void kruskalSpanningTree(const Matrix& graph, std::vector<int>& parent, std::vector<int>& rank, std::vector<int>& edge) ;
+TreeNode* kruskalSpanningTree(const Matrix& graph, std::vector<int>& parent, std::vector<int>& rank, std::vector<int>& edge) ;

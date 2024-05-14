@@ -76,7 +76,7 @@ void primSpanningTree(const Matrix &graph, int start) {
         lowCost[i] = graph[start][i];
         closest[i] = start;
     }
-    printf("Prim Spanning Tree:\n %d ", start);
+//    printf("Prim Spanning Tree:\n %d ", start);
     for (int i = 1; i < graph.size() - 1; i++) {
 
         // 找到当前最小权值的边
@@ -88,7 +88,7 @@ void primSpanningTree(const Matrix &graph, int start) {
             }
         }
 
-        printf("--%d--> %d ", min, closeIndex);
+        printf("(%d, %d) weight: %d\n ",  closeIndex, closest[closeIndex], min);
         lowCost[closeIndex] = 0; // 标记为已访问
 
         // 更新相邻节点的权值

@@ -2,6 +2,7 @@
 #include <queue>
 #include <algorithm>
 #include <vector>
+#include <set>
 #include "spanningTree.h"
 
 // DFS
@@ -144,18 +145,15 @@ auto kruskalSpanningTree(const Matrix &graph) -> void {
             totalCost += edge.w;
 
             // 合并联通分量
-            // 这里统一合并为较小的联通分量编号, 防止出现因顶点顺序不同而导致的错误
-            int vIDLess = std::min(vSet[edge.u], vSet[edge.v]);
-            int vIDMore = std::max(vSet[edge.u], vSet[edge.v]);
-            for (int i = 0; i < graph.size(); ++i) {
-                if (vSet[i] == vIDMore) {
-                    vSet[i] = vIDLess;
+            // 暂时存储vSet[edge.v]的值, 因为vSet[edge.v]的值会改变
+            int vIdU = vSet[edge.u];
+            for (int i = 0; i < edgeNum; ++i) {
+                if (vSet[i] == vIdU) {
+                    vSet[i] = vSet[edge.v];
                 }
             }
             curEdgeNum++;
         }
     }
-
-
     std::cout << "Kruskal Spanning Tree total cost: " << totalCost << std::endl;
 }

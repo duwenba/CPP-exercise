@@ -1,5 +1,7 @@
 #include <iostream>
 #include <queue>
+#include <algorithm>
+#include <vector>
 #include "spanningTree.h"
 
 // DFS
@@ -49,12 +51,12 @@ std::vector<TreeNode *> bfsSpanningTree(const Matrix &graph) {
         while (!q.empty()) {
             auto *node = q.front();
             q.pop();
-            for (int i = 0; i < graph.size(); i++) {
-                if (graph[node->val][i] > 0 && graph[node->val][i] != INF && !visited[i]) {
-                    auto *child = new TreeNode(i);
+            for (int j = 0; j < graph.size(); j++) {
+                if (graph[node->val][j] > 0 && graph[node->val][j] != INF && !visited[j]) {
+                    auto *child = new TreeNode(j);
                     node->children.push_back(child);
                     q.push(child);
-                    visited[i] = true;
+                    visited[j] = true;
                 }
             }
         }
@@ -70,14 +72,14 @@ void primSpanningTree(const Matrix &graph, int start) {
     lowCost[start] = 0;
     auto closest = std::vector<int>(graph.size(), -1);
 
-    int min, closeIndex;
+    int min, closeIndex, totalCost = 0;
 
     for (int i = 0; i < graph.size(); i++) {
         lowCost[i] = graph[start][i];
         closest[i] = start;
     }
 //    printf("Prim Spanning Tree:\n %d ", start);
-    for (int i = 1; i < graph.size() - 1; i++) {
+    for (int i = 1; i < graph.size(); i++) {
 
         // 找到当前最小权值的边
         min = INF;
@@ -88,7 +90,9 @@ void primSpanningTree(const Matrix &graph, int start) {
             }
         }
 
-        printf("(%d, %d) weight: %d\n ",  closeIndex, closest[closeIndex], min);
+        printf("(%d, %d) weight: %d\n", closest[closeIndex], closeIndex, min);
+        totalCost += min;
+
         lowCost[closeIndex] = 0; // 标记为已访问
 
         // 更新相邻节点的权值
@@ -100,4 +104,58 @@ void primSpanningTree(const Matrix &graph, int start) {
         }
     }
 
+    std::cout << "Prim Spanning Tree total cost: " << totalCost << std::endl;
+}
+
+auto kruskalSpanningTree(const Matrix &graph) -> void {
+    // 联通分量编号, 用来判断两个节点是否属于同一联通分量, 初始每个节点都属于一个联通分量
+    auto vSet = [&graph]() {
+        std::vector<int> vSet(graph.size());
+        for (int i = 0; i < graph.size(); i++) {
+            vSet[i] = i;
+        }
+        return vSet;
+    }();
+    auto edgeSet = std::vector<Edge>(); // 边集
+    int edgeNum = 0; // 边数
+    int totalCost = 0; // 最小生成树的权值
+
+    // 初始化edgeSet
+    for (int i = 0; i < graph.size(); i++) {
+        for (int j = 0; j < graph.size(); ++j) {
+            if (graph[i][j] != 0 && graph[i][j] != INF && i < j) {
+                // 无向图, 边(i,j)和边(j,i)只需保留一个
+                edgeSet.push_back(Edge{i, j, graph[i][j]});
+                edgeNum++;
+            }
+        }
+    }
+    // 排序边集, 按权值从小到大排序
+    auto comp = [](const Edge &a, const Edge &b) { return a.w < b.w; };
+    std::sort(edgeSet.begin(), edgeSet.end(), comp);
+    // 最小生成树
+    int curEdgeNum = 1; // 当前边数
+    int curEdgeIndex = 0; // 当前边索引
+    while (curEdgeNum < graph.size()) {
+        auto &edge = edgeSet[curEdgeIndex++];
+        if (vSet[edge.u] != vSet[edge.v]) {// 边(u,v)不属于同一联通分量
+            //打印边
+            std::cout << "(" << edge.u << ", " << edge.v << ") weight: " << edge.w << std::endl;
+            totalCost += edge.w;
+
+            // 合并联通分量
+            // 这里统一合并为较小的联通分量编号, 防止出现因顶点顺序不同而导致的错误
+            int vIDLess = std::min(vSet[edge.u], vSet[edge.v]);
+            int vIDMore = std::max(vSet[edge.u], vSet[edge.v]);
+            for (int i = 0; i < graph.size(); ++i) {
+                if (vSet[i] == vIDMore) {
+                    vSet[i] = vIDLess;
+                }
+            }
+            curEdgeNum++;
+        }
+    }
+
+
+    std::cout << "Kruskal Spanning Tree total cost: " << totalCost << std::endl;
 }

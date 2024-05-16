@@ -8,20 +8,14 @@
 
 
 // 邻接矩阵
-// 0 1 1 inf inf 1
-// 1 0 inf 1 1 inf
-// 1 inf 0 inf inf inf
-// inf 1 inf 0 1 inf
-// inf 1 inf 1 0 inf
-// 1 inf inf inf inf 0
-
 Matrix mat = {
-        {0,   1,   1,   INF, INF, 1},
-        {1,   0,   INF, 1,   1,   INF},
-        {1,   INF, 0,   INF, INF, INF},
-        {INF, 1,   INF, 0,   1,   INF},
-        {INF, 1,   INF, 1,   0,   INF},
-        {1,   INF, INF, INF, INF, 0}
+        {0,   28,  INF, INF, INF, 10,  INF},
+        {28,  0,   16,  INF, INF, INF, 14},
+        {INF, 16,  0,   12,  INF, INF, INF},
+        {INF, INF, 12,  0,   22,  INF, 18},
+        {INF, INF, INF, 22,  0,   25,  24},
+        {10,  INF, INF, INF, 25,  0,   INF},
+        {INF, 14,  INF, 18,  24,  INF, 0},
 };
 
 
@@ -47,6 +41,11 @@ int main() {
     // PRIM 算法生成最小生成树
     std::cout << "PRIM Spanning Tree:" << std::endl;
     primSpanningTree(mat, 0);
+    std::cout << "\n";
+
+    // Kruskal 算法生成最小生成树
+    std::cout << "Kruskal Spanning Tree:" << std::endl;
+    kruskalSpanningTree(mat);
     std::cout << "\n";
 
     return 0;

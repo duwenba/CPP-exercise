@@ -39,11 +39,13 @@ public:
         font_file.close();
     }
 
-    font::table::head gethead();
+    auto gethead() -> font::table::head;
 
-    font::table::loca getloca();
+    auto getloca() -> font::table::loca;
 
-    font::table::Glyphs getGlyphs(uint16_t index);
+    auto getGlyphs(uint16_t index) -> font::table::Glyphs;
+
+    auto getcmap() -> font::table::cmap;
 
 };
 

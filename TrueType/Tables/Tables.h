@@ -9,7 +9,7 @@
 #include "TableDirection.h"
 #include "head.h"
 #include "loca.h"
-
+#include "cmap.h"
 #include "SimpleGlyphs.h"
 
 #endif //TABLES_TABLES_H

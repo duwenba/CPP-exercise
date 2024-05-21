@@ -4,7 +4,7 @@
 
 #include "TrueType.h"
 #include <Readers/Readers.h>
-
+#include "Tables.h"
 #include <memory>
 
 using namespace font::reader;
@@ -35,26 +35,33 @@ TrueType::TrueType(const string &file_path) {
     numGlyphs =  readnumGlyphs(font_file);
 }
 
-head TrueType::gethead() {
+auto TrueType::gethead() -> head {
     auto table = table_direction.at("head");
     font_file.seekg(table->offset);
     auto m_head = readhead(font_file);
     return m_head;
 }
 
-font::table::loca TrueType::getloca() {
+auto TrueType::getloca() -> font::table::loca {
     auto table = table_direction.at("loca");
     font_file.seekg(table->offset);
     auto m_loca = readloca(font_file, numGlyphs);
     return m_loca;
 }
 
-font::table::Glyphs TrueType::getGlyphs(uint16_t index) {
+auto TrueType::getGlyphs(uint16_t index) -> font::table::Glyphs {
     auto table = table_direction.at("glyf");
     font_file.seekg(table->offset + getloca().offsetAt(index));
     auto m_glyphs = Glyphs();
     m_glyphs.glyphs_des = readGlyphsDes(font_file);
+    if (m_glyphs.glyphs_des.numberOfContours <= 0) return m_glyphs;
     m_glyphs.glyphs_data = readGlyphsData(font_file, m_glyphs.glyphs_des.numberOfContours);
     return m_glyphs;
+}
+
+auto TrueType::getcmap() -> font::table::cmap {
+    int offset = table_direction.at("cmap")->offset;
+    font::table::cmap table(font_file,offset);
+    return table;
 }
 

@@ -11,5 +11,7 @@ file(GLOB_RECURSE SOURCES
         "Readers/*.cpp"
 )
 
+#find_package(Freetype REQUIRED)
+#target_link_libraries(main PRIVATE Freetype::Freetype) # since CMake 3.10
 
 add_executable(Tables ${SOURCES} main.cpp)

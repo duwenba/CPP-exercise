@@ -39,7 +39,9 @@ std::vector<TreeNode *> dfsSpanningTree(const Matrix &graph);
 auto bfsSpanningTree(const Matrix &graph) -> std::vector<TreeNode *>;
 
 // Prim算法得到生成树
-void primSpanningTree(const Matrix &graph, int start);
+///@param graph  邻接矩阵
+///@param start  起始节点
+auto primSpanningTree(const Matrix &graph, int start) -> void;
 
 // Kruskal算法得到最小生成树
 auto kruskalSpanningTree(const Matrix &graph) -> void;

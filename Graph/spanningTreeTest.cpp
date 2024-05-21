@@ -1,8 +1,7 @@
 //
 // Created by 22753 on 2024/5/14.
 //
-#include "spanningTree.h"
-#include <limits>
+#include "spaningTree/spanningTree.h"
 #include <iostream>
 
 

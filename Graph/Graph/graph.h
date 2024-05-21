@@ -66,7 +66,23 @@ public:
     /// \return Print the shortest path from start to all vertices
     auto Dijkstra(int start) -> void;
 
+    /// Floyd algorithm
+    /// \param mat The adjacency matrix of the graph
+    /// \var distance[][] : the shortest distance between two vertices
+    /// \var path[][] : the path from start to end vertex
+    /// \return Print the shortest path from all vertices to all vertices
+    /*
+     * 算法思路：
+     * 以每一个顶点为中间点，计算从起点到其余各点的最短路径。
+     * 对于每一对顶点i和j，如果存在一条从i到j的路径，则将其权值设为min(mat[i][k]+mat[k][j]),其中k∈V-i∪V-j。
+     * 如果从中间点中转能够减小距离，则更新mat[i][j]。
+     * 最后，输出mat。
+     */
+    auto Floyd() -> void;
+
     const Matrix &getMatrix();
+
+    static auto PrintMatrix(Matrix& mat) -> void ;
 
     auto PrintMatrix() -> void ;
 

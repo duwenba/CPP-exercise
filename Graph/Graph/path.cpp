@@ -11,7 +11,7 @@
 #include <set>
 #include <vector>
 
-auto PrintPath(const vector<int>& prev, int end) -> void {
+auto PrintPath(const vector<int> &prev, int end) -> void {
     if (prev[end] == -1) {
         cout << end << " ";
         return;
@@ -21,7 +21,7 @@ auto PrintPath(const vector<int>& prev, int end) -> void {
 }
 
 auto Graph::Dijkstra(int start) -> void {
-    auto& mat = matrix;
+    auto &mat = matrix;
     // variables initialization
     int n = mat.size();  // number of vertices
     vector<int> distFromStart(n, INF);  // shortest distance from start
@@ -34,7 +34,7 @@ auto Graph::Dijkstra(int start) -> void {
     unvisited.erase(start);
 
     for (int i = 1; i < n; i++) {
-        distFromStart[i] = mat[start][i] ;  // initialize the distance from start to i
+        distFromStart[i] = mat[start][i];  // initialize the distance from start to i
         if (mat[start][i] < INF) {
             prev[i] = start;          // initialize the previous vertex in the shortest path
         }
@@ -45,7 +45,7 @@ auto Graph::Dijkstra(int start) -> void {
         int minDist = INF;
         int minIndex = -1;
         // find the vertex with the minimum distance from start
-        for (auto& u : unvisited) {
+        for (auto &u: unvisited) {
             if (distFromStart[u] < minDist) {
                 minDist = distFromStart[u];
                 minIndex = u;
@@ -56,7 +56,7 @@ auto Graph::Dijkstra(int start) -> void {
         visited.insert(minIndex);
         unvisited.erase(minIndex);
         // update the distance and previous vertex of the adjacent vertices
-        for (auto& u : unvisited) {
+        for (auto &u: unvisited) {
             if (mat[minIndex][u] != INF) {
                 int newDist = distFromStart[minIndex] + mat[minIndex][u];
                 if (newDist < distFromStart[u]) {
@@ -124,3 +124,36 @@ vector<vector<int>> Graph::findAllPaths(int start, int end, vector<bool> &visite
     return paths;
 }
 
+auto Graph::Floyd() -> void {
+
+    // 变量初始化
+    auto &mat = matrix; // 邻接矩阵
+    int n = (int) mat.size();    // 顶点数
+    auto distance = mat;  // 最短距离矩阵
+    Matrix path(n, vector<int>(n, INF)); // 记录路径 INF 表示不中转
+
+
+    for (int k = 0; k < n; k++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (distance[i][k] != INF && distance[k][j] != INF // 可以从 i 到 k 再到 j
+                    and distance[i][k] + distance[k][j] < distance[i][j]) // 中转距离更短
+                {
+                    distance[i][j] = distance[i][k] + distance[k][j];
+                    path[i][j] = k; // 记录路径
+                }
+            }
+
+        }
+    }
+
+    // 输出结果
+    cout << "The shortest distance matrix is: " << endl;
+    PrintMatrix(distance);
+    cout << endl;
+
+    cout << "The path matrix is: " << endl;
+    PrintMatrix(path);
+    cout << endl;
+
+}

@@ -90,7 +90,7 @@ const Matrix &Graph::getMatrix() {
 }
 
 
-auto Graph::PrintMatrix() -> void {
+auto Graph::PrintMatrix(Matrix& matrix) -> void {
     for (const auto& row: matrix) {
         std::cout << "|";
         for (auto & elem: row) {
@@ -103,5 +103,8 @@ auto Graph::PrintMatrix() -> void {
     }
 }
 
+auto Graph::PrintMatrix() -> void {
+    PrintMatrix(matrix);
+}
 
 
